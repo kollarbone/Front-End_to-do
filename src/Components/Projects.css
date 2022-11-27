@@ -1,0 +1,49 @@
+.project {
+  background-color: #e1dbf5;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 15px;
+  cursor: pointer;
+}
+.project_name {
+  font-size: 16px;
+  color: #4f4f4f;
+  font-weight: 500;
+}
+.projects {
+  margin: 10px;
+}
+.header {
+  background-color: #e1e6f9;
+  font-size: 18px;
+  height: fit-content;
+  color: #4f4f4f;
+  font-weight: 500;
+  padding: 20px;
+}
+.add_icon {
+  font-size: 18px;
+  position: relative;
+  float: right;
+  cursor: pointer;
+}
+.close_icon {
+  color: #4f4f4f;
+  position: relative;
+  float: right;
+  cursor: pointer;
+  font-size: 18px;
+}
+.close_icon:hover {
+  scale: 1.2;
+}
+.add_icon:hover {
+  scale: 1.2;
+}
+.project:hover {
+  scale: 1.01;
+  box-shadow: 10px 5px 10px #e9e9e9;
+}
+.link {
+  text-decoration: none;
+}

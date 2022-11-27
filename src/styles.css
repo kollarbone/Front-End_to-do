@@ -1,4 +1,15 @@
+body {
+  padding: 0;
+  margin: 0;
+}
 .App {
   font-family: sans-serif;
   text-align: center;
+  width: 80%;
+  margin: 0 auto;
+}
+@media only screen and (max-width: 768px) {
+  .App {
+    width: 100%;
+  }
 }
