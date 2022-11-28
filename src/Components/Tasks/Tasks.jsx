@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { MdOutlineAdd } from "react-icons/md";
 import "./Tasks.css";
 import _ from "lodash";
+import GoBack from "./GoBack";
 
 function Tasks(props) {
   let path = useLocation().pathname.slice(
@@ -15,7 +16,7 @@ function Tasks(props) {
     Queue: {
       title: "Queue",
       color: "#f7e1f5",
-      items: [tasks[0], tasks[1]]
+      items: []
     },
     Development: {
       title: "Development",
@@ -28,6 +29,18 @@ function Tasks(props) {
       items: []
     }
   });
+  _.map(state, (data, key) => {
+    if (data.items.length === 0) {
+      tasks.map((t, index) => {
+        if (key === t.status) {
+          data.items = [...new Set([...data.items, t])];
+          data.items = data.items.filter((t) => t.id !== 0);
+          return data.items;
+        }
+      });
+    }
+  });
+
   const handleDragEnd = ({ destination, source }) => {
     if (!destination) {
       return;
@@ -47,14 +60,18 @@ function Tasks(props) {
         0,
         itemCopy
       );
+      itemCopy.status = destination.droppableId;
       return prev;
     });
   };
   return (
     <div className="tasks">
       <div className="header">
-        <span>TASKS</span>
-        <MdOutlineAdd className="add_icon" />
+        <GoBack className="add_icon" />
+        <div className="task_header">TASKS</div>
+        <div>
+          <MdOutlineAdd className="add_icon" />
+        </div>
       </div>
       <DragDropContext onDragEnd={handleDragEnd}>
         <div className="colums">
@@ -74,7 +91,7 @@ function Tasks(props) {
                         data.items.map((item, index) => (
                           <Draggable
                             key={item.id}
-                            draggableId={item.id.toString()}
+                            draggableId={item.id}
                             index={index}
                           >
                             {(provided) => (
@@ -85,8 +102,16 @@ function Tasks(props) {
                                 className="task"
                               >
                                 <RiDeleteBinLine className="close_icon" />
-                                <span className="project_name">
-                                  {item.taskName}
+                                <span className="task_info">
+                                  <span className="task_name">
+                                    {item.taskNumber}.{item.taskName}
+                                  </span>
+                                  <span className="task_descr">
+                                    {item.taskDescr}
+                                  </span>
+                                  <span className="task_duration">
+                                    ({item.start}-{item.end})
+                                  </span>
                                 </span>
                               </div>
                             )}

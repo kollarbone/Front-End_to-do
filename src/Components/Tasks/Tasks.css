@@ -18,3 +18,44 @@
   border-radius: 15px;
   cursor: pointer;
 }
+.task_info {
+  display: flex;
+  flex-direction: column;
+}
+.task_name {
+  font-size: 18px;
+}
+.task_descr {
+  font-size: 16px;
+  color: #4f4f4f;
+}
+.task_duration {
+  color: #858585;
+  font-size: 14px;
+}
+.button_back {
+  border: none;
+  border-radius: 50px;
+  font-size: 20px;
+  background-color: unset;
+  width: fit-content;
+  height: fit-content;
+  cursor: pointer;
+  color: #4f4f4f;
+}
+.button_back:hover {
+  border-radius: 5px;
+  scale: 1.2;
+}
+.icons {
+  display: flex;
+  width: 100%;
+}
+.tasks .header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.task_header {
+  width: 100%;
+}

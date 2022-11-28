@@ -9,10 +9,10 @@ let initialState = {
           id: "1",
           taskNumber: 1,
           taskName: "Create main page",
-          taskDescr: "",
-          start: "",
-          inWork: "",
-          end: "",
+          taskDescr: "Create main page functional and design",
+          start: "25.11.22",
+          inWork: "7 days",
+          end: "01.12.22",
           priority: 1,
           files: {},
           status: "Queue"
@@ -21,13 +21,13 @@ let initialState = {
           id: "2",
           taskNumber: 2,
           taskName: "Fix colors",
-          taskDescr: "",
-          start: "",
-          inWork: "",
-          end: "",
+          taskDescr: "Find suitable colors that match each other",
+          start: "26.11.22",
+          inWork: "3",
+          end: "28.11.22",
           priority: 2,
           files: {},
-          status: "Done"
+          status: "Queue"
         }
       ]
     },
