@@ -1,0 +1,45 @@
+.task_detail {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+.banner_modal {
+  width: 60%;
+  border-radius: 15px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  align-content: center;
+}
+.full_task_info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.banner_modal .task_name {
+  margin: 5px;
+}
+.info_block .task_descr {
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+.info_block {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-around;
+  width: 100%;
+}
+.sub_tasks {
+  display: flex;
+  flex-direction: column;
+}

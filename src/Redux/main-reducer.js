@@ -10,24 +10,52 @@ let initialState = {
           taskNumber: 1,
           taskName: "Create main page",
           taskDescr: "Create main page functional and design",
-          start: "25.11.22",
+          start: "2022-11-25",
           inWork: "7 days",
-          end: "01.12.22",
+          end: "2022-12-01",
           priority: 1,
           files: {},
-          status: "Queue"
+          status: "Queue",
+          sub: [
+            {
+              id: 1,
+              name: "do something 1"
+            },
+            {
+              id: 2,
+              name: "do something 2"
+            },
+            {
+              id: 3,
+              name: "do something 3"
+            }
+          ]
         },
         {
           id: "2",
           taskNumber: 2,
           taskName: "Fix colors",
           taskDescr: "Find suitable colors that match each other",
-          start: "26.11.22",
+          start: "2022-11-26",
           inWork: "3",
-          end: "28.11.22",
+          end: "2022-11-28",
           priority: 2,
           files: {},
-          status: "Queue"
+          status: "Done",
+          sub: [
+            {
+              id: 1,
+              name: "do something 1"
+            },
+            {
+              id: 2,
+              name: "do something 2"
+            },
+            {
+              id: 3,
+              name: "do something 3"
+            }
+          ]
         }
       ]
     },
@@ -45,7 +73,21 @@ let initialState = {
           end: "",
           priority: 1,
           files: {},
-          status: "Queue"
+          status: "Queue",
+          sub: [
+            {
+              id: 1,
+              name: "do something 1"
+            },
+            {
+              id: 2,
+              name: "do something 2"
+            },
+            {
+              id: 3,
+              name: "do something 3"
+            }
+          ]
         }
       ]
     }

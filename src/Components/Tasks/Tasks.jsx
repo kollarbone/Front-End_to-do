@@ -6,8 +6,11 @@ import { MdOutlineAdd } from "react-icons/md";
 import "./Tasks.css";
 import _ from "lodash";
 import GoBack from "./GoBack";
+import TaskDetail from "./TaskDetail/TaskDetail";
 
 function Tasks(props) {
+  const [show, setShow] = useState(false);
+  const [modalData, setModalData] = useState(null);
   let path = useLocation().pathname.slice(
     useLocation().pathname.lastIndexOf("//")
   );
@@ -64,6 +67,7 @@ function Tasks(props) {
       return prev;
     });
   };
+
   return (
     <div className="tasks">
       <div className="header">
@@ -95,25 +99,36 @@ function Tasks(props) {
                             index={index}
                           >
                             {(provided) => (
-                              <div
-                                ref={provided.innerRef}
-                                {...provided.draggableProps}
-                                {...provided.dragHandleProps}
-                                className="task"
-                              >
-                                <RiDeleteBinLine className="close_icon" />
-                                <span className="task_info">
-                                  <span className="task_name">
-                                    {item.taskNumber}.{item.taskName}
+                              <>
+                                <div
+                                  ref={provided.innerRef}
+                                  {...provided.draggableProps}
+                                  {...provided.dragHandleProps}
+                                  className="task"
+                                  onClick={() => {
+                                    setShow(true);
+                                    setModalData(item);
+                                  }}
+                                >
+                                  <RiDeleteBinLine className="close_icon" />
+                                  <span className="task_info">
+                                    <span className="task_name">
+                                      {item.taskNumber}.{item.taskName}
+                                    </span>
+                                    <span className="task_descr">
+                                      {item.taskDescr}
+                                    </span>
+                                    <span className="task_duration">
+                                      ({item.start}-{item.end})
+                                    </span>
                                   </span>
-                                  <span className="task_descr">
-                                    {item.taskDescr}
-                                  </span>
-                                  <span className="task_duration">
-                                    ({item.start}-{item.end})
-                                  </span>
-                                </span>
-                              </div>
+                                </div>
+                                <TaskDetail
+                                  item={modalData}
+                                  show={show}
+                                  onClose={() => setShow(false)}
+                                />
+                              </>
                             )}
                           </Draggable>
                         ))}
