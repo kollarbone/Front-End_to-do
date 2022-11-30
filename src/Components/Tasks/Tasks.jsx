@@ -127,12 +127,14 @@ function Tasks(props) {
                                     </span>
                                   </span>
                                 </div>
-                                <TaskDetail
-                                  item={modalData}
-                                  show={show}
-                                  onClose={() => setShow(false)}
-                                  id={path}
-                                />
+                                {show && (
+                                  <TaskDetail
+                                    item={modalData}
+                                    show={show}
+                                    onClose={() => setShow(false)}
+                                    id={path}
+                                  />
+                                )}
                               </>
                             )}
                           </Draggable>

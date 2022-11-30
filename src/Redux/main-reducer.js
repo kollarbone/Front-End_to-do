@@ -213,9 +213,9 @@ let initialState = {
           taskNumber: 1,
           taskName: "",
           taskDescr: "",
-          start: "",
-          inWork: "",
-          end: "",
+          start: "2022-11-25",
+          inWork: "7 days",
+          end: "2022-12-01",
           priority: 1,
           files: [
             { name: document_1, id: 1 },

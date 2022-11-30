@@ -39,12 +39,13 @@ export default function SearchBar(props) {
                         {task.taskNumber}.{task.taskName}
                       </div>
                     </li>
-                    <TaskDetail
-                      item={modalData}
-                      show={show}
-                      onClose={() => setShow(false)}
-                      id={path}
-                    />
+                    {show && (
+                      <TaskDetail
+                        item={modalData}
+                        onClose={() => setShow(false)}
+                        id={path}
+                      />
+                    )}
                   </>
                 );
               })

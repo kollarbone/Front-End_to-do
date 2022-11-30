@@ -1,16 +1,23 @@
 import React, { useState } from "react";
 import "./TaskDetail.css";
 import "draft-js/dist/Draft.css";
-import Sub_Tasks from "./Sub_Tasks";
+import { MdOutlineAdd } from "react-icons/md";
+import { VscClose } from "react-icons/vsc";
 
 export default function TaskDetail(props) {
   const [comment, setComment] = useState("");
   const [comments, setComments] = useState([]);
+  const [sub, setSub] = useState("");
+  const [onCkick, setOnClick] = useState(false);
+  const [subs, setSubs] = useState(props.item ? props.item.sub : "");
 
-  if (!props.show) {
-    return null;
-  }
-
+  const onClickHandlerSub = (e) => {
+    setSubs((subs) => [...subs, { name: sub }]);
+    setSub((e.target.value = ""));
+  };
+  const onChangeHandlerSub = (e) => {
+    setSub(e.target.value);
+  };
   const onClickHandler = (e) => {
     setComments((comments) => [...comments, comment]);
     setComment((e.target.value = ""));
@@ -19,7 +26,9 @@ export default function TaskDetail(props) {
     setComment(e.target.value);
   };
 
-  const work = new Date().getDate() - new Date(props.item.start).getDate();
+  let work = props.item.start
+    ? new Date().getDate() - new Date(props.item.start).getDate()
+    : "";
   return (
     <div className="task_detail" onClick={props.onClose}>
       <div
@@ -51,7 +60,38 @@ export default function TaskDetail(props) {
                   </a>
                 ))}
             </div>
-            <Sub_Tasks sub={props.item.sub} />
+            <div className="sub_tasks_block">
+              <span className="task_descr">Sub tasks: </span>
+              <div className="sub_tasks">
+                {subs && subs.map((i, index) => <li>{i.name}</li>)}
+              </div>
+              {onCkick === false && (
+                <div onClick={() => setOnClick(true)}>
+                  <MdOutlineAdd
+                    className="add_icon"
+                    style={{ float: "left" }}
+                  />
+                </div>
+              )}
+              {onCkick === true && (
+                <div style={{ display: "flex" }}>
+                  <VscClose
+                    onClick={() => setOnClick(false)}
+                    className="add_icon"
+                    style={{ float: "left" }}
+                  />
+                  <div style={{ width: "100%" }}>
+                    <textarea value={sub} onChange={onChangeHandlerSub} />
+                    <button
+                      onClick={onClickHandlerSub}
+                      className="send_coments"
+                    >
+                      Post
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
           <div className="block_comments">
             <span className="task_descr">Coments:</span>
