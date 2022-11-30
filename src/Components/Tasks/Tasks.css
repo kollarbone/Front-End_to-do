@@ -60,3 +60,54 @@
 .task_header {
   width: 100%;
 }
+.input {
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  padding: 8px;
+  width: 90%;
+}
+.search_form {
+  position: relative;
+}
+.auto_complete {
+  background-color: #e1e6f9;
+  position: absolute;
+  left: 0;
+  top: 40px;
+  width: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 300px;
+  height: auto;
+  overflow: auto;
+  z-index: 100;
+  border-radius: 10px;
+}
+.auto_complete_item {
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-decoration: none;
+  background-color: rgba(255, 255, 255, 0.171);
+  border-radius: 10px;
+}
+.auto_complete_item:hover {
+  cursor: pointer;
+  background-color: #fff;
+
+  transition: 0.2s ease-in, color 0.2s ease-in;
+}
+.LiveSearch {
+  width: 300px;
+}
+.search_character_name {
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -7,6 +7,7 @@ import "./Tasks.css";
 import _ from "lodash";
 import GoBack from "./GoBack";
 import TaskDetail from "./TaskDetail/TaskDetail";
+import SearchBar from "./SearchBar";
 
 function Tasks(props) {
   const [show, setShow] = useState(false);
@@ -73,6 +74,9 @@ function Tasks(props) {
       <div className="header">
         <GoBack className="add_icon" />
         <div className="task_header">TASKS</div>
+        <div>
+          <SearchBar tasks={tasks} />
+        </div>
         <div>
           <MdOutlineAdd className="add_icon" />
         </div>
