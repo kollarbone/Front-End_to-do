@@ -127,6 +127,7 @@ function Tasks(props) {
                                   item={modalData}
                                   show={show}
                                   onClose={() => setShow(false)}
+                                  id={path}
                                 />
                               </>
                             )}

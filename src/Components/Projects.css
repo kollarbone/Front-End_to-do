@@ -26,6 +26,7 @@
   position: relative;
   float: right;
   cursor: pointer;
+  color: #4f4f4f;
 }
 .close_icon {
   color: #4f4f4f;
@@ -36,13 +37,16 @@
 }
 .close_icon:hover {
   scale: 1.2;
+  transition: 0.2s ease-in, color 0.2s ease-in;
 }
 .add_icon:hover {
   scale: 1.2;
+  transition: 0.2s ease-in, color 0.2s ease-in;
 }
 .project:hover {
   scale: 1.01;
   box-shadow: 10px 5px 10px #e9e9e9;
+  transition: 0.2s ease-in, color 0.2s ease-in;
 }
 .link {
   text-decoration: none;

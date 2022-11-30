@@ -1,4 +1,9 @@
+import document_1 from "../Files/document_1.jpg";
+import document_2 from "../Files/4-7.jpg";
+import document_3 from "../Files/buymymag-image.jpg";
+import document_4 from "../Files/technology.jpg";
 const SETPROJECTS = "SET-PROJECTS";
+
 let initialState = {
   projects: [
     {
@@ -14,8 +19,14 @@ let initialState = {
           inWork: "7 days",
           end: "2022-12-01",
           priority: 1,
-          files: {},
+          files: [
+            { name: document_1, id: 1 },
+            { name: document_2, id: 2 },
+            { name: document_3, id: 3 },
+            { name: document_4, id: 4 }
+          ],
           status: "Queue",
+          coments: "",
           sub: [
             {
               id: 1,
@@ -40,8 +51,142 @@ let initialState = {
           inWork: "3",
           end: "2022-11-28",
           priority: 2,
-          files: {},
+          files: [
+            { name: document_1, id: 1 },
+            { name: document_2, id: 2 },
+            { name: document_3, id: 3 },
+            { name: document_4, id: 4 }
+          ],
           status: "Done",
+          coments: "",
+          sub: [
+            {
+              id: 1,
+              name: "do something 1"
+            },
+            {
+              id: 2,
+              name: "do something 2"
+            },
+            {
+              id: 3,
+              name: "do something 3"
+            }
+          ]
+        },
+        {
+          id: "3",
+          taskNumber: 3,
+          taskName: "Create main page",
+          taskDescr: "Create main page functional and design",
+          start: "2022-11-25",
+          inWork: "7 days",
+          end: "2022-12-01",
+          priority: 3,
+          files: [
+            { name: document_1, id: 1 },
+            { name: document_2, id: 2 },
+            { name: document_3, id: 3 },
+            { name: document_4, id: 4 }
+          ],
+          status: "Development",
+          coments: "",
+          sub: [
+            {
+              id: 1,
+              name: "do something 1"
+            },
+            {
+              id: 2,
+              name: "do something 2"
+            },
+            {
+              id: 3,
+              name: "do something 3"
+            }
+          ]
+        },
+        {
+          id: "4",
+          taskNumber: 4,
+          taskName: "Fix colors",
+          taskDescr: "Find suitable colors that match each other",
+          start: "2022-11-26",
+          inWork: "3",
+          end: "2022-11-28",
+          priority: 4,
+          files: [
+            { name: document_1, id: 1 },
+            { name: document_2, id: 2 },
+            { name: document_3, id: 3 },
+            { name: document_4, id: 4 }
+          ],
+          status: "Done",
+          coments: "",
+          sub: [
+            {
+              id: 1,
+              name: "do something 1"
+            },
+            {
+              id: 2,
+              name: "do something 2"
+            },
+            {
+              id: 3,
+              name: "do something 3"
+            }
+          ]
+        },
+        {
+          id: "5",
+          taskNumber: 5,
+          taskName: "Create main page",
+          taskDescr: "Create main page functional and design",
+          start: "2022-11-25",
+          inWork: "7 days",
+          end: "2022-12-01",
+          priority: 5,
+          files: [
+            { name: document_1, id: 1 },
+            { name: document_2, id: 2 },
+            { name: document_3, id: 3 },
+            { name: document_4, id: 4 }
+          ],
+          status: "Development",
+          coments: "",
+          sub: [
+            {
+              id: 1,
+              name: "do something 1"
+            },
+            {
+              id: 2,
+              name: "do something 2"
+            },
+            {
+              id: 3,
+              name: "do something 3"
+            }
+          ]
+        },
+        {
+          id: "6",
+          taskNumber: 6,
+          taskName: "Fix colors",
+          taskDescr: "Find suitable colors that match each other",
+          start: "2022-11-26",
+          inWork: "3",
+          end: "2022-11-28",
+          priority: 6,
+          files: [
+            { name: document_1, id: 1 },
+            { name: document_2, id: 2 },
+            { name: document_3, id: 3 },
+            { name: document_4, id: 4 }
+          ],
+          status: "Queue",
+          coments: "",
           sub: [
             {
               id: 1,
@@ -72,8 +217,14 @@ let initialState = {
           inWork: "",
           end: "",
           priority: 1,
-          files: {},
+          files: [
+            { name: document_1, id: 1 },
+            { name: document_2, id: 2 },
+            { name: document_3, id: 3 },
+            { name: document_4, id: 4 }
+          ],
           status: "Queue",
+          coments: "",
           sub: [
             {
               id: 1,
@@ -105,6 +256,7 @@ const mainReducer = (state = initialState, action) => {
         projects: [...action.projects]
       };
     }
+
     default:
       return stateCopy;
   }

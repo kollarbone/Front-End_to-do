@@ -1,15 +1,24 @@
 import React, { useState } from "react";
 import "./TaskDetail.css";
-import { Editor, EditorState } from "draft-js";
 import "draft-js/dist/Draft.css";
+import Sub_Tasks from "./Sub_Tasks";
 
 export default function TaskDetail(props) {
+  const [comment, setComment] = useState("");
+  const [comments, setComments] = useState([]);
+
   if (!props.show) {
     return null;
   }
-  const [editorState, setEditorState] = useState(() =>
-    EditorState.createEmpty()
-  );
+
+  const onClickHandler = (e) => {
+    setComments((comments) => [...comments, comment]);
+    setComment((e.target.value = ""));
+  };
+  const onChangeHandler = (e) => {
+    setComment(e.target.value);
+  };
+
   const work = new Date().getDate() - new Date(props.item.start).getDate();
   return (
     <div className="task_detail" onClick={props.onClose}>
@@ -34,33 +43,29 @@ export default function TaskDetail(props) {
             <span className="task_descr">Priority: {props.item.priority}</span>
             <span className="task_descr">Status: {props.item.status}</span>
             <span className="task_descr">Files: </span>
-            <div
-              style={{
-                backgroundColor: "#fff",
-                padding: "10px",
-                borderRadius: "10px",
-                width: "100%"
-              }}
-            >
-              <span className="task_descr">Sub tasks: </span>
-              <div className="sub_tasks">
-                {props.item.sub.map((i, index) => (
-                  <li>{i.name}</li>
+            <div className="files">
+              {props.item.files &&
+                props.item.files.map((i, index) => (
+                  <a className="file" href={i.name}>
+                    {i.name}
+                  </a>
                 ))}
-              </div>
             </div>
+            <Sub_Tasks sub={props.item.sub} />
           </div>
-          <div
-            style={{
-              backgroundColor: "#fff",
-              padding: "10px",
-              borderRadius: "10px",
-              width: "30%",
-              height: "100%"
-            }}
-          >
+          <div className="block_comments">
             <span className="task_descr">Coments:</span>
-            <Editor editorState={editorState} onChange={setEditorState} />
+            <div className="cur_comments">
+              {comments.map((com) => (
+                <li className="com">{com}</li>
+              ))}
+            </div>
+            <div className="comments">
+              <textarea value={comment} onChange={onChangeHandler} />
+              <button onClick={onClickHandler} className="send_coments">
+                Send
+              </button>
+            </div>
           </div>
         </div>
       </div>
