@@ -95,6 +95,11 @@ textarea {
   border-radius: 10px;
   width: 100%;
 }
+.banner_modal .task_name {
+  display: flex;
+  align-items: center;
+}
+
 .block_comments {
   background-color: #fff;
   padding: 10px;
