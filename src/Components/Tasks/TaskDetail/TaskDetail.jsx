@@ -25,10 +25,10 @@ export default function TaskDetail(props) {
   const onChangeHandler = (e) => {
     setComment(e.target.value);
   };
+  const startDate = new Date(props.item.start);
+  const timeEnd = new Date();
+  const diff = new Date(timeEnd.getTime() - startDate.getTime());
 
-  let work = props.item.start
-    ? new Date().getDate() - new Date(props.item.start).getDate()
-    : "";
   return (
     <div className="task_detail" onClick={props.onClose}>
       <div
@@ -47,7 +47,9 @@ export default function TaskDetail(props) {
             <span className="task_duration">
               Creation data: {props.item.start}
             </span>
-            <span className="task_duration">In work: {work} day(s)</span>
+            <span className="task_duration">
+              In work: {diff.getUTCMonth()} month(s) {diff.getUTCDate()} day(s)
+            </span>
             <span className="task_duration">Ending data: {props.item.end}</span>
             <span className="task_descr">Priority: {props.item.priority}</span>
             <span className="task_descr">Status: {props.item.status}</span>
