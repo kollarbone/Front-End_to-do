@@ -61,7 +61,11 @@ export default function TaskDetail(props) {
         )}
         {isEditClicked === true && (
           <span className="task_name">
-            <input value={name} onChange={onChangeHandlerName} />
+            <input
+              style={{ fontSize: "14px", borderRadius: "10px" }}
+              value={name}
+              onChange={onChangeHandlerName}
+            />
             <AiOutlineEdit className="add_icon" onClick={handleEditClick} />
           </span>
         )}
@@ -74,7 +78,11 @@ export default function TaskDetail(props) {
               <span className="task_descr">
                 Description:
                 <input
-                  style={{ width: "400px" }}
+                  style={{
+                    width: "400px",
+                    fontSize: "14px",
+                    borderRadius: "10px"
+                  }}
                   value={descr}
                   onChange={onChangeHandlerDescr}
                 />

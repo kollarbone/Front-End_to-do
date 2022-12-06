@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
-import { RiDeleteBinLine } from "react-icons/ri";
 import { MdOutlineAdd } from "react-icons/md";
 import "./Tasks.css";
 import _ from "lodash";
@@ -10,6 +9,7 @@ import SearchBar from "./SearchBar";
 
 function Tasks(props) {
   const [show, setShow] = useState(false);
+  const [newTask, setNewTask] = useState(false);
   const [modalData, setModalData] = useState(null);
   const [state, setState] = useState(props.task_data);
   const handleDragEnd = ({ destination, source }) => {
@@ -22,6 +22,7 @@ function Tasks(props) {
     ) {
       return;
     }
+
     const itemCopy = { ...state[source.droppableId].items[source.index] };
     setState((prev) => {
       prev = { ...prev };
@@ -45,7 +46,21 @@ function Tasks(props) {
           <SearchBar tasks={props.tasks} path={props.path} />
         </div>
         <div>
-          <MdOutlineAdd className="add_icon" />
+          <MdOutlineAdd
+            className="add_icon"
+            onClick={() => {
+              setNewTask(true);
+            }}
+          />
+          {newTask && (
+            <div className="task_detail" onClick={() => setNewTask(false)}>
+              <div
+                className="banner_modal"
+                style={{ backgroundColor: "#e1e6f9" }}
+                onClick={(e) => e.stopPropagation()}
+              ></div>
+            </div>
+          )}
         </div>
       </div>
       <DragDropContext onDragEnd={handleDragEnd}>
@@ -81,7 +96,6 @@ function Tasks(props) {
                                     setModalData(item);
                                   }}
                                 >
-                                  <RiDeleteBinLine className="close_icon" />
                                   <span className="task_info">
                                     <span className="task_name">
                                       {item.taskNumber}.{item.taskName}
@@ -90,7 +104,7 @@ function Tasks(props) {
                                       {item.taskDescr}
                                     </span>
                                     <span className="task_duration">
-                                      ({item.start}-{item.end})
+                                      ({item.start}/{item.end})
                                     </span>
                                   </span>
                                 </div>
