@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import React, { useState } from "react";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { MdOutlineAdd } from "react-icons/md";
@@ -12,39 +11,7 @@ import SearchBar from "./SearchBar";
 function Tasks(props) {
   const [show, setShow] = useState(false);
   const [modalData, setModalData] = useState(null);
-  let path = useLocation().pathname.slice(
-    useLocation().pathname.lastIndexOf("//")
-  );
-  let tasks = props.store[path - 1].tasks;
-  const [state, setState] = useState({
-    Queue: {
-      title: "Queue",
-      color: "#f7e1f5",
-      items: []
-    },
-    Development: {
-      title: "Development",
-      color: "#e1dbf5",
-      items: []
-    },
-    Done: {
-      title: "Done",
-      color: "#e8f1f0",
-      items: []
-    }
-  });
-  _.map(state, (data, key) => {
-    if (data.items.length === 0) {
-      tasks.map((t, index) => {
-        if (key === t.status) {
-          data.items = [...new Set([...data.items, t])];
-          data.items = data.items.filter((t) => t.id !== 0);
-          return data.items;
-        }
-      });
-    }
-  });
-
+  const [state, setState] = useState(props.task_data);
   const handleDragEnd = ({ destination, source }) => {
     if (!destination) {
       return;
@@ -75,7 +42,7 @@ function Tasks(props) {
         <GoBack className="add_icon" />
         <div className="task_header">TASKS</div>
         <div>
-          <SearchBar tasks={tasks} />
+          <SearchBar tasks={props.tasks} path={props.path} />
         </div>
         <div>
           <MdOutlineAdd className="add_icon" />
@@ -132,7 +99,7 @@ function Tasks(props) {
                                     item={modalData}
                                     show={show}
                                     onClose={() => setShow(false)}
-                                    id={path}
+                                    id={props.path}
                                   />
                                 )}
                               </>

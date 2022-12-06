@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import TaskDetail from "./TaskDetail/TaskDetail";
-import { useLocation } from "react-router-dom";
 
 export default function SearchBar(props) {
   const tasks = props.tasks;
@@ -11,12 +10,10 @@ export default function SearchBar(props) {
   });
   const [show, setShow] = useState(false);
   const [modalData, setModalData] = useState(null);
-  let path = useLocation().pathname.slice(
-    useLocation().pathname.lastIndexOf("//")
-  );
+
   return (
     <div className="LiveSearch">
-      <form className="search_form">
+      <div className="search_form">
         <input
           className="input"
           type="text"
@@ -43,7 +40,7 @@ export default function SearchBar(props) {
                       <TaskDetail
                         item={modalData}
                         onClose={() => setShow(false)}
-                        id={path}
+                        id={props.path}
                       />
                     )}
                   </>
@@ -51,7 +48,7 @@ export default function SearchBar(props) {
               })
             : null}
         </ul>
-      </form>
+      </div>
     </div>
   );
 }

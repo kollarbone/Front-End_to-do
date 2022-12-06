@@ -1,7 +1,7 @@
 import Propjects from "./Components/Projects";
 import "./styles.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Tasks from "./Components/Tasks/Tasks";
+import TasksClass from "./Components/Tasks/TaskClass";
 
 export default function App(props) {
   return (
@@ -14,7 +14,9 @@ export default function App(props) {
           />
           <Route
             path="/tasks/:project_id"
-            element={<Tasks store={props.store.getState().main.projects} />}
+            element={
+              <TasksClass store={props.store.getState().main.projects} />
+            }
           />
         </Routes>
       </div>
