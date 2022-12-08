@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import "./TaskDetail.css";
-import "draft-js/dist/Draft.css";
 import { MdOutlineAdd } from "react-icons/md";
 import { VscClose } from "react-icons/vsc";
 import { AiOutlineEdit } from "react-icons/ai";
 
 export default function TaskDetail(props) {
   const [comment, setComment] = useState("");
-  const [comments, setComments] = useState([]);
+  const [comments, setComments] = useState(props.item.coments);
   const [name, setName] = useState(props.item.taskName);
   const [descr, setDescr] = useState(props.item.taskDescr);
   const [sub, setSub] = useState("");
@@ -45,6 +44,23 @@ export default function TaskDetail(props) {
       setIsEdutClicked(false);
     }
   };
+  const newData = () => {
+    const data = {
+      id: props.item.id,
+      taskNumber: props.item.taskNumber,
+      taskName: name,
+      taskDescr: descr,
+      start: props.item.start,
+      inWork: diff,
+      end: props.item.end,
+      priority: props.item.priority,
+      files: props.item.files,
+      status: props.item.status,
+      coments: comments,
+      sub: subs
+    };
+    localStorage.setItem("data", JSON.stringify(data));
+  };
 
   return (
     <div className="task_detail" onClick={props.onClose}>
@@ -62,13 +78,14 @@ export default function TaskDetail(props) {
         {isEditClicked === true && (
           <span className="task_name">
             <input
-              style={{ fontSize: "14px", borderRadius: "10px" }}
+              className="input"
               value={name}
               onChange={onChangeHandlerName}
             />
             <AiOutlineEdit className="add_icon" onClick={handleEditClick} />
           </span>
         )}
+
         <div className="info_block">
           <div className="full_task_info">
             {isEditClicked === false && (
@@ -79,10 +96,9 @@ export default function TaskDetail(props) {
                 Description:
                 <input
                   style={{
-                    width: "400px",
-                    fontSize: "14px",
-                    borderRadius: "10px"
+                    width: "350px"
                   }}
+                  className="input"
                   value={descr}
                   onChange={onChangeHandlerDescr}
                 />
@@ -142,9 +158,8 @@ export default function TaskDetail(props) {
           <div className="block_comments">
             <span className="task_descr">Coments:</span>
             <div className="cur_comments">
-              {comments.map((com) => (
-                <li className="com">{com}</li>
-              ))}
+              {comments &&
+                comments.map((com) => <li className="com">{com}</li>)}
             </div>
             <div className="comments">
               <textarea value={comment} onChange={onChangeHandler} />
@@ -154,6 +169,9 @@ export default function TaskDetail(props) {
             </div>
           </div>
         </div>
+        <button className="save" onClick={newData}>
+          SAVE
+        </button>
       </div>
     </div>
   );

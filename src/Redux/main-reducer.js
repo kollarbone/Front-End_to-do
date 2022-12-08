@@ -26,7 +26,7 @@ let initialState = {
             { name: document_4, id: 4 }
           ],
           status: "Queue",
-          coments: "",
+          coments: [],
           sub: [
             {
               id: 1,
@@ -58,7 +58,7 @@ let initialState = {
             { name: document_4, id: 4 }
           ],
           status: "Done",
-          coments: "",
+          coments: [],
           sub: [
             {
               id: 1,
@@ -90,7 +90,7 @@ let initialState = {
             { name: document_4, id: 4 }
           ],
           status: "Development",
-          coments: "",
+          coments: [],
           sub: [
             {
               id: 1,
@@ -122,7 +122,7 @@ let initialState = {
             { name: document_4, id: 4 }
           ],
           status: "Done",
-          coments: "",
+          coments: [],
           sub: [
             {
               id: 1,
@@ -154,7 +154,7 @@ let initialState = {
             { name: document_4, id: 4 }
           ],
           status: "Development",
-          coments: "",
+          coments: [],
           sub: [
             {
               id: 1,
@@ -186,7 +186,7 @@ let initialState = {
             { name: document_4, id: 4 }
           ],
           status: "Queue",
-          coments: "",
+          coments: [],
           sub: [
             {
               id: 1,
@@ -224,7 +224,7 @@ let initialState = {
             { name: document_4, id: 4 }
           ],
           status: "Queue",
-          coments: "",
+          coments: [],
           sub: [
             {
               id: 1,
