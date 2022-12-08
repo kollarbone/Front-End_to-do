@@ -11,6 +11,7 @@
     "lodash": "4.17.21",
     "react": "18.3.0-next-fecc288b7-20221025",
     "react-beautiful-dnd": "13.1.1",
+    "react-cookie": "4.1.1",
     "react-dom": "18.2.0",
     "react-file-reader": "1.1.4",
     "react-icons": "4.6.0",

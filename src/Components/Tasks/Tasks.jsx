@@ -9,23 +9,20 @@ import SearchBar from "./SearchBar";
 import { v4 } from "uuid";
 
 function Tasks(props) {
-  let DATA = {};
+  let DATA = JSON.parse(localStorage.getItem("state")) || props.task_data;
   if (JSON.parse(localStorage.getItem("state"))) {
     let state_data = JSON.parse(localStorage.getItem("state"));
     if (JSON.parse(localStorage.getItem("data"))) {
       let save_data = JSON.parse(localStorage.getItem("data"));
-      state_data[save_data.status].items.map((i) => {
+      let test = state_data[save_data.status].items.map((i) => {
         if (i.id === save_data.id) {
           i = save_data;
         }
-        i = { ...state_data[save_data.status].items, i };
 
-        // state_data[save_data.status].items += i;
-        console.log(111, i);
+        return i;
       });
-      console.log(123, state_data[save_data.status].items);
+      state_data[save_data.status].items = test;
       DATA = state_data;
-      console.log(save_data, state_data, DATA);
     } else {
       DATA = state_data;
     }
@@ -255,7 +252,10 @@ function Tasks(props) {
                                   <TaskDetail
                                     item={modalData}
                                     show={show}
-                                    onClose={() => setShow(false)}
+                                    onClose={() => {
+                                      setShow(false);
+                                      window.location.reload();
+                                    }}
                                     id={props.path}
                                   />
                                 )}
