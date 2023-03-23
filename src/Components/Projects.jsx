@@ -5,7 +5,7 @@ export default function Propjects(props) {
   return (
     <div className="projects">
       <div className="header">
-        <span>PROJECTS</span>
+        <span>Things to do</span>
       </div>
       {props.store.map((item) => (
         <NavLink className="link" to={"/tasks/" + item.projectID}>

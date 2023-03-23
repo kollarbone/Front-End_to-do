@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import TaskDetail from "./TaskDetail/TaskDetail";
 
 export default function SearchBar(props) {
   const tasks = props.tasks;
@@ -8,8 +7,6 @@ export default function SearchBar(props) {
     task = task.taskNumber + task.taskName;
     return task.toLowerCase().includes(value.toLowerCase());
   });
-  const [show, setShow] = useState(false);
-  const [modalData, setModalData] = useState(null);
 
   return (
     <div className="LiveSearch">
@@ -26,23 +23,10 @@ export default function SearchBar(props) {
                 return (
                   <>
                     <li className="auto_complete_item">
-                      <div
-                        className="search_character_name"
-                        onClick={() => {
-                          setShow(true);
-                          setModalData(task);
-                        }}
-                      >
+                      <div className="search_character_name">
                         {task.taskNumber}.{task.taskName}
                       </div>
                     </li>
-                    {show && (
-                      <TaskDetail
-                        item={modalData}
-                        onClose={() => setShow(false)}
-                        id={props.path}
-                      />
-                    )}
                   </>
                 );
               })

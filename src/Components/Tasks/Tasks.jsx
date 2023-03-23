@@ -4,14 +4,13 @@ import { MdOutlineAdd } from "react-icons/md";
 import "./Tasks.css";
 import _ from "lodash";
 import GoBack from "./GoBack";
-import TaskDetail from "./TaskDetail/TaskDetail";
 import SearchBar from "./SearchBar";
 import { v4 } from "uuid";
 
 function Tasks(props) {
-  let DATA = JSON.parse(localStorage.getItem("state")) || props.task_data;
-  if (JSON.parse(localStorage.getItem("state"))) {
-    let state_data = JSON.parse(localStorage.getItem("state"));
+  let DATA = JSON.parse(localStorage.getItem(props.path)) || props.task_data;
+  if (JSON.parse(localStorage.getItem(props.path))) {
+    let state_data = JSON.parse(localStorage.getItem(props.path));
     if (JSON.parse(localStorage.getItem("data"))) {
       let save_data = JSON.parse(localStorage.getItem("data"));
       let test = state_data[save_data.status].items.map((i) => {
@@ -29,21 +28,15 @@ function Tasks(props) {
   } else {
     DATA = props.task_data;
   }
-  const [show, setShow] = useState(false);
   const [newTask, setNewTask] = useState(false);
-  const [modalData, setModalData] = useState(null);
   const [state, setState] = useState(DATA);
   const [NewTaskData, setNewTaskData] = useState({
     id: v4(),
     taskName: "",
     taskDescr: "",
     start: "",
-    end: "",
     status: "Queue",
-    taskNumber: "",
-    files: [],
-    coments: "",
-    sub: []
+    taskNumber: ""
   });
   const onChangeHandlerNewTask = (name) => (e) => {
     let newArr = { ...NewTaskData, [name]: e.target.value };
@@ -61,9 +54,8 @@ function Tasks(props) {
       };
     });
     setNewTask(false);
-    localStorage.setItem("state", JSON.stringify(state));
+    localStorage.setItem(props.path, JSON.stringify(state));
   };
-
   const handleDragEnd = ({ destination, source }) => {
     if (!destination) {
       return;
@@ -86,7 +78,7 @@ function Tasks(props) {
       itemCopy.status = destination.droppableId;
       return prev;
     });
-    localStorage.setItem("state", JSON.stringify(state));
+    localStorage.setItem(props.path, JSON.stringify(state));
   };
 
   return (
@@ -115,7 +107,7 @@ function Tasks(props) {
                   className="task_name"
                   style={{ width: "100%", justifyContent: "space-between" }}
                 >
-                  <span className="task_name">Task name:</span>
+                  <span className="task_name"> Name:</span>
                   <input
                     style={{ width: "50%" }}
                     className="input"
@@ -128,7 +120,7 @@ function Tasks(props) {
                   className="task_name"
                   style={{ width: "100%", justifyContent: "space-between" }}
                 >
-                  <span className="task_name">Task number:</span>
+                  <span className="task_name">Number:</span>
                   <input
                     style={{ width: "50%" }}
                     className="input"
@@ -141,7 +133,7 @@ function Tasks(props) {
                   className="task_name"
                   style={{ width: "100%", justifyContent: "space-between" }}
                 >
-                  <span className="task_name">Task description:</span>
+                  <span className="task_name">Description:</span>
                   <input
                     style={{ width: "50%" }}
                     className="input"
@@ -154,7 +146,7 @@ function Tasks(props) {
                   className="task_name"
                   style={{ width: "100%", justifyContent: "space-between" }}
                 >
-                  <span className="task_name">Task start:</span>
+                  <span className="task_name">Start:</span>
                   <input
                     style={{ width: "50%" }}
                     className="input"
@@ -163,24 +155,12 @@ function Tasks(props) {
                     onChange={onChangeHandlerNewTask("start")}
                   />
                 </span>
+
                 <span
                   className="task_name"
                   style={{ width: "100%", justifyContent: "space-between" }}
                 >
-                  <span className="task_name">Task end:</span>
-                  <input
-                    style={{ width: "50%" }}
-                    className="input"
-                    value={NewTaskData.end}
-                    name="end"
-                    onChange={onChangeHandlerNewTask("end")}
-                  />
-                </span>
-                <span
-                  className="task_name"
-                  style={{ width: "20%", justifyContent: "space-between" }}
-                >
-                  <span className="task_name">Task status:</span>
+                  <span className="task_name">Status:</span>
                   <span className="task_name">{NewTaskData.status}</span>
                 </span>
                 <span
@@ -231,10 +211,6 @@ function Tasks(props) {
                                   {...provided.draggableProps}
                                   {...provided.dragHandleProps}
                                   className="task"
-                                  onClick={() => {
-                                    setShow(true);
-                                    setModalData(item);
-                                  }}
                                 >
                                   <span className="task_info">
                                     <span className="task_name">
@@ -244,21 +220,10 @@ function Tasks(props) {
                                       {item.taskDescr}
                                     </span>
                                     <span className="task_duration">
-                                      ({item.start}/{item.end})
+                                      ({item.start})
                                     </span>
                                   </span>
                                 </div>
-                                {show && (
-                                  <TaskDetail
-                                    item={modalData}
-                                    show={show}
-                                    onClose={() => {
-                                      setShow(false);
-                                      window.location.reload();
-                                    }}
-                                    id={props.path}
-                                  />
-                                )}
                               </>
                             )}
                           </Draggable>

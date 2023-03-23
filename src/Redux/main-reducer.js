@@ -1,244 +1,115 @@
-import document_1 from "../Files/document_1.jpg";
-import document_2 from "../Files/4-7.jpg";
-import document_3 from "../Files/buymymag-image.jpg";
-import document_4 from "../Files/technology.jpg";
 const SETPROJECTS = "SET-PROJECTS";
 
 let initialState = {
   projects: [
     {
       projectID: 1,
-      projectName: "Korean online clothing store",
+      projectName: "Movies to watch",
       tasks: [
         {
           id: "1",
           taskNumber: 1,
-          taskName: "Create main page",
-          taskDescr: "Create main page functional and design",
+          taskName: "Titanic",
+          taskDescr: "документальный, драма",
           start: "2022-11-25",
-          inWork: "7 days",
-          end: "2022-12-01",
           priority: 1,
-          files: [
-            { name: document_1, id: 1 },
-            { name: document_2, id: 2 },
-            { name: document_3, id: 3 },
-            { name: document_4, id: 4 }
-          ],
-          status: "Queue",
-          coments: [],
-          sub: [
-            {
-              id: 1,
-              name: "do something 1"
-            },
-            {
-              id: 2,
-              name: "do something 2"
-            },
-            {
-              id: 3,
-              name: "do something 3"
-            }
-          ]
+          status: "Queue"
         },
         {
           id: "2",
           taskNumber: 2,
-          taskName: "Fix colors",
-          taskDescr: "Find suitable colors that match each other",
+          taskName: "Spider-Man: Into the Spider-Verse",
+          taskDescr: "мультфильм, фантастика",
           start: "2022-11-26",
-          inWork: "3",
-          end: "2022-11-28",
           priority: 2,
-          files: [
-            { name: document_1, id: 1 },
-            { name: document_2, id: 2 },
-            { name: document_3, id: 3 },
-            { name: document_4, id: 4 }
-          ],
-          status: "Done",
-          coments: [],
-          sub: [
-            {
-              id: 1,
-              name: "do something 1"
-            },
-            {
-              id: 2,
-              name: "do something 2"
-            },
-            {
-              id: 3,
-              name: "do something 3"
-            }
-          ]
+          status: "Done"
         },
         {
           id: "3",
           taskNumber: 3,
-          taskName: "Create main page",
-          taskDescr: "Create main page functional and design",
-          start: "2022-11-25",
-          inWork: "7 days",
-          end: "2022-12-01",
+          taskName: "Hannibal",
+          taskDescr: "детектив, триллер",
+          start: "2023-01-25",
           priority: 3,
-          files: [
-            { name: document_1, id: 1 },
-            { name: document_2, id: 2 },
-            { name: document_3, id: 3 },
-            { name: document_4, id: 4 }
-          ],
-          status: "Development",
-          coments: [],
-          sub: [
-            {
-              id: 1,
-              name: "do something 1"
-            },
-            {
-              id: 2,
-              name: "do something 2"
-            },
-            {
-              id: 3,
-              name: "do something 3"
-            }
-          ]
+          status: "Development"
         },
         {
           id: "4",
           taskNumber: 4,
-          taskName: "Fix colors",
-          taskDescr: "Find suitable colors that match each other",
-          start: "2022-11-26",
-          inWork: "3",
-          end: "2022-11-28",
+          taskName: "Puss in Boots",
+          taskDescr: "мультфильм, фэнтези",
+          start: "2023-01-30",
           priority: 4,
-          files: [
-            { name: document_1, id: 1 },
-            { name: document_2, id: 2 },
-            { name: document_3, id: 3 },
-            { name: document_4, id: 4 }
-          ],
-          status: "Done",
-          coments: [],
-          sub: [
-            {
-              id: 1,
-              name: "do something 1"
-            },
-            {
-              id: 2,
-              name: "do something 2"
-            },
-            {
-              id: 3,
-              name: "do something 3"
-            }
-          ]
+          status: "Done"
         },
         {
           id: "5",
           taskNumber: 5,
-          taskName: "Create main page",
-          taskDescr: "Create main page functional and design",
-          start: "2022-11-25",
-          inWork: "7 days",
-          end: "2022-12-01",
+          taskName: "Split",
+          taskDescr: "триллер, ужасы",
+          start: "2022-10-14",
           priority: 5,
-          files: [
-            { name: document_1, id: 1 },
-            { name: document_2, id: 2 },
-            { name: document_3, id: 3 },
-            { name: document_4, id: 4 }
-          ],
-          status: "Development",
-          coments: [],
-          sub: [
-            {
-              id: 1,
-              name: "do something 1"
-            },
-            {
-              id: 2,
-              name: "do something 2"
-            },
-            {
-              id: 3,
-              name: "do something 3"
-            }
-          ]
+          status: "Development"
         },
         {
           id: "6",
           taskNumber: 6,
-          taskName: "Fix colors",
-          taskDescr: "Find suitable colors that match each other",
-          start: "2022-11-26",
-          inWork: "3",
-          end: "2022-11-28",
+          taskName: "Mr. Robot",
+          taskDescr: "триллер, драма",
+          start: "2022-11-05",
           priority: 6,
-          files: [
-            { name: document_1, id: 1 },
-            { name: document_2, id: 2 },
-            { name: document_3, id: 3 },
-            { name: document_4, id: 4 }
-          ],
-          status: "Queue",
-          coments: [],
-          sub: [
-            {
-              id: 1,
-              name: "do something 1"
-            },
-            {
-              id: 2,
-              name: "do something 2"
-            },
-            {
-              id: 3,
-              name: "do something 3"
-            }
-          ]
+          status: "Queue"
         }
       ]
     },
     {
       projectID: 2,
-      projectName: "Streaming service for movies and TV series",
+      projectName: "House works for week",
       tasks: [
         {
           id: "1",
           taskNumber: 1,
-          taskName: "",
-          taskDescr: "",
-          start: "2022-11-25",
-          inWork: "7 days",
-          end: "2022-12-01",
+          taskName: "Dishers",
+          taskDescr: "Washing the disher every day",
+          start: "2023-03-20",
           priority: 1,
-          files: [
-            { name: document_1, id: 1 },
-            { name: document_2, id: 2 },
-            { name: document_3, id: 3 },
-            { name: document_4, id: 4 }
-          ],
-          status: "Queue",
-          coments: [],
-          sub: [
-            {
-              id: 1,
-              name: "do something 1"
-            },
-            {
-              id: 2,
-              name: "do something 2"
-            },
-            {
-              id: 3,
-              name: "do something 3"
-            }
-          ]
+          status: "Queue"
+        },
+        {
+          id: "2",
+          taskNumber: 2,
+          taskName: "Floor",
+          taskDescr: "Washing the floor once a week",
+          start: "2023-03-20",
+          priority: 2,
+          status: "Done"
+        },
+        {
+          id: "3",
+          taskNumber: 3,
+          taskName: "Dust",
+          taskDescr: "Wipe off the dust once a week",
+          start: "2023-01-25",
+          priority: 3,
+          status: "Development"
+        },
+        {
+          id: "4",
+          taskNumber: 4,
+          taskName: "Clothes",
+          taskDescr: "Put the clothes in the closet then it everywhere",
+          start: "2023-01-30",
+          priority: 4,
+          status: "Done"
+        },
+        {
+          id: "5",
+          taskNumber: 5,
+          taskName: "Laundry",
+          taskDescr: "Wash clothes once a week",
+          start: "2023-03-14",
+          priority: 5,
+          status: "Development"
         }
       ]
     }
