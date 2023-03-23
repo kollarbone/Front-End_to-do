@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
-import { MdOutlineAdd } from "react-icons/md";
+import { MdOutlineAdd, MdDeleteOutline } from "react-icons/md";
 import "./Tasks.css";
 import _ from "lodash";
 import GoBack from "./GoBack";
@@ -56,6 +56,11 @@ function Tasks(props) {
     setNewTask(false);
     localStorage.setItem(props.path, JSON.stringify(state));
   };
+  const onClickRemoveTask = (item) => {
+    const items = state[item.status].filter((i) => i.id !== item.id);
+    this.setState({ Queue: { items: items } });
+  };
+  console.log(state);
   const handleDragEnd = ({ destination, source }) => {
     if (!destination) {
       return;
@@ -212,6 +217,10 @@ function Tasks(props) {
                                   {...provided.dragHandleProps}
                                   className="task"
                                 >
+                                  <MdDeleteOutline
+                                    className="add_icon"
+                                    onClick={() => onClickRemoveTask(item)}
+                                  />
                                   <span className="task_info">
                                     <span className="task_name">
                                       {item.taskNumber}.{item.taskName}
